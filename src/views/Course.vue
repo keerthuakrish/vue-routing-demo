@@ -1,25 +1,13 @@
 <template>
-  <section class="course-details">
-    <img :src="require(`../assets/${course.image}.png`)" :alt="course.name" />
-    <h1>{{ course.name }}</h1>
-    <div v-if="cname">
-      <div class="course-desc">
-        <div class="row" v-for="courseRow in course.courses" :key="courseRow.name">
-          <b-card
-            :img-src="require(`../assets/${courseRow.image}.png`)"
-            :img-alt="courseRow.name"
-            img-left
-            class="mb-3"
-          >
-            <b-card-text>
-              <p>{{ courseRow.name }}</p>
-              <p>{{ courseRow.description }}</p>
-            </b-card-text>
-          </b-card>
-        </div>
+  <div>
+    <section class="course-details">
+      <h1>{{ course.name }}</h1>
+      <div class="card">
+        <img :src="require(`../assets/${course.image}.png`)" :alt="course.name" />
+        <p>{{ course.description }}</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -29,15 +17,31 @@ export default {
     return {};
   },
   props: {
+    dname: {
+      type: String,
+      required: true
+    },
     cname: {
       type: String,
       required: true
     }
   },
   computed: {
+    degree() {
+      return this.$store.getters.degreeProgramByName(this.dname);
+    },
     course() {
-      return this.$store.getters.degreeProgramByCourse(this.cname);
+      return this.degree.courses.find(
+        course => course.routePath === this.cname
+      );
     }
   }
 };
 </script>
+<style lang="scss">
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+</style>

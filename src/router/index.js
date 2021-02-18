@@ -51,11 +51,20 @@ const routes = [
       import(/* webpackChunkName: "backend" */ "../views/Backend.vue")
   },
   {
-    path: "/course/:cname",
-    name: "CourseDetails",
+    path: "/degree/:dname",
+    name: "DegreeDetails",
     props: true, // <-- props as a Boolean
     component: () =>
-      import(/* webpackChunkName: "course" */ "../views/Course.vue")
+      import(/* webpackChunkName: "degree" */ "../views/Degree.vue"),
+    children: [
+      {
+        path: ":cname",
+        name: "CourseDetails",
+        props: true, // <-- props as a Boolean
+        component: () =>
+          import(/* webpackChunkName: "course" */ "../views/Course.vue"),
+      }
+    ]
   }
 ];
 

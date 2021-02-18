@@ -86,8 +86,8 @@ const state = {
 
 const getters = {
     alldegreePrograms: (state) => state.degreePrograms,
-    degreeProgramByCourse: (state) => (cname) => {
-        return state.degreePrograms.find(degree => degree.routePath === cname)
+    degreeProgramByName: (state) => (dname) => {
+        return state.degreePrograms.find(degree => degree.routePath === dname)
     }
 };
 

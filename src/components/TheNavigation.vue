@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link>
       <div v-for="item in alldegreePrograms" :key="item.routePath">
         <router-link
-          :to="{ name: 'CourseDetails', params: { cname: item.routePath } }"
+          :to="{ name: 'DegreeDetails', params: { dname: item.routePath } }"
         >{{ item.name }}</router-link>
       </div>
     </div>

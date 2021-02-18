@@ -4,7 +4,7 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <div class="programs">
       <div v-for="item in alldegreePrograms" :key="item.routePath">
-        <router-link :to="{ name: 'CourseDetails', params: { cname: item.routePath } }">
+        <router-link :to="{ name: 'DegreeDetails', params: { dname: item.routePath } }">
           <h2 v-html="item.name"></h2>
         </router-link>
       </div>
@@ -18,7 +18,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
-  props: ['nameprop'],
+  props: ["nameprop"],
   computed: mapGetters(["alldegreePrograms"])
 };
 </script>
