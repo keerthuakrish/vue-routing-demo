@@ -1,13 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    </div>-->
+    <TheNavigation />
+    <router-view name="user" />
+    <router-view :key="$route.path" />
   </div>
 </template>
-
+<script>
+// @ is an alias to /src
+import TheNavigation from "@/components/TheNavigation.vue";
+export default {
+  components: {
+    TheNavigation
+  }
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -28,5 +38,8 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.row {
+  margin: 0;
 }
 </style>
